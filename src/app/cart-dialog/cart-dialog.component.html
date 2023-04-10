@@ -1,0 +1,25 @@
+<body class="body">
+<h1 class="h1">Tu carrito</h1>
+<mat-divider></mat-divider>
+<br>
+<div class="cards" *ngFor="let p of arrData">
+  <mat-card *ngIf="arrData.length > 0" mat-card-image class="cart-card">
+    <img style="width: 200px; height:200px;" src="{{p.url}}" alt="">
+    <button (click)="eliminarProducto(p)" matTooltip="Eliminar del carro" mat-icon-button color="warn"
+            style="margin-top: -40%;margin-left: 40%;">
+      <mat-icon>
+        delete
+      </mat-icon>
+    </button>
+  </mat-card>
+  <!--  TODO MENSAJE CUANDO NO HAYA NADA-->
+  <!--  <ng-template *ngIf="arrData.length < 1">-->
+  <!--    <p>No hay productos en tu carrito</p>-->
+  <!--  </ng-template>-->
+</div>
+<mat-dialog-actions mat-dialog-close="" align="center">
+  <button mat-button color="primary" tabindex="-1">Cerrar</button>
+</mat-dialog-actions>
+</body>
+
+

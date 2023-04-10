@@ -1,0 +1,28 @@
+<body class="body">
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1 class="title">BIENVENIDO</h1>
+<form [formGroup]="formLogin">
+  <mat-card class="card">
+    <h2 class="title2">Ingrese sus datos</h2>
+    <div class="loginForm">
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput type="text" formControlName="email">
+        <mat-error>Campo Obligatorio</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-error>Campo Obligatorio</mat-error>
+      </mat-form-field>
+      <mat-dialog-actions>
+        <button class="btn" (click)="login()" mat-raised-button color="primary">Ingresar</button>
+      </mat-dialog-actions>
+    </div>
+  </mat-card>
+</form>
+</body>

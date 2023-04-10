@@ -1,0 +1,51 @@
+<div class="productos" style="margin-top: 6.5%">
+  <mat-divider style="width: 200%; margin-left: -200px"></mat-divider>
+  <button [disabled]="saveLength !== true" (click)="verCarrito()" matTooltip="Ver carrito" mat-icon-button
+          mat-raised-button style="margin-left: 95%; margin-top: 1%">
+    <mat-icon matBadge="{{carritoItems.length}}" matBadgeColor="warn">shopping_cart</mat-icon>
+  </button>
+  <br>
+  <h1 style="margin-left: 47.5%;">Productos</h1>
+  <br>
+  <div class="card-container" *ngFor="let p of productos">
+    <mat-card class="mat-elevation-z1" style="width: 70%; height: 300px">
+      <img style="width: 200px; height:200px;" src="{{p.url}}" alt="">
+      <span class="btn-fav">
+      <button (click)="sendToFavourites(p)" mat-icon-button mat-raised-button
+              color="warn">
+        <mat-icon>favorite</mat-icon>
+      </button>
+        <!-- TODO QUE CAMBIE SOLAMENTE PARA UN CARD-->
+        <button [@fadeInOut]="'in'" *ngIf="p.verificado" id="check"
+                style="margin-top: 15px;"
+                mat-icon-button mat-raised-button
+                color="primary">
+          <mat-icon [matTooltip]="tooltip">check_circle</mat-icon>
+        </button>
+        </span>
+      <div class="buttons-group">
+        <span class="span-buttons-container">
+          <form [formGroup]="form">
+          <mat-form-field style="width: 100px; margin-left: 10px">
+          <mat-label>Cantidad</mat-label>
+               <input matInput type="number" min="0" formControlName="cantidad">
+            <span *ngIf="p.verificadoInput">
+                <mat-error>Ingrese cantidad</mat-error>
+              </span>
+        </mat-form-field>
+          <button matTooltip="Agregar al carro" (click)="addToCart(p)"
+                  mat-raised-button
+                  color="warn">
+          Agregar
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+          </form>
+        </span>
+
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+
+
