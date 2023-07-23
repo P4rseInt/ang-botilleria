@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
-
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,12 @@ import {EventEmitter, Injectable} from '@angular/core';
 export class ProductosServiceService {
   productosCarrito: any = new EventEmitter();
 
-  constructor() {
+  constructor(
+    private httpClient: HttpClient
+  ) {
+  }
+
+  getAllProducts() {
+    return this.httpClient.get('localhost:8090/products');
   }
 }

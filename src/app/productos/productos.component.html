@@ -1,50 +1,44 @@
-<div class="productos" style="margin-top: 6.5%">
-  <mat-divider style="width: 200%; margin-left: -200px"></mat-divider>
-  <button [disabled]="saveLength !== true" (click)="verCarrito()" matTooltip="Ver carrito" mat-icon-button
+<div class="productos" style="margin-top: 2%">
+  <!--  <h1 style="margin-left: 47.5%;"><strong>Productos</strong></h1>-->
+  <button [disabled]="cartHasLength !== true" (click)="verCarrito()" matTooltip="Ver carrito" mat-icon-button
           mat-raised-button style="margin-left: 95%; margin-top: 1%">
     <mat-icon matBadge="{{carritoItems.length}}" matBadgeColor="warn">shopping_cart</mat-icon>
+    <div matTooltipClass="my-tooltip" id="tooltip-div" matTooltip='¡Agregado al carrito!' matTooltipPosition="left"
+         style="margin-top: -1px; "
+         #tooltip="matTooltip" [@fadeInOut]="'in'">
+    </div>
   </button>
-  <br>
-  <h1 style="margin-left: 47.5%;">Productos</h1>
   <br>
   <div class="card-container" *ngFor="let p of productos">
     <mat-card class="mat-elevation-z1" style="width: 70%; height: 300px">
-      <img style="width: 200px; height:200px;" src="{{p.url}}" alt="">
+      <div class="image-container">
+        <img style="width: 200px; height:200px;" src="{{p.url}}" alt="">
+      </div>
       <span class="btn-fav">
-      <button (click)="sendToFavourites(p)" mat-icon-button mat-raised-button
-              color="warn">
+      <button (click)="sendToFavourites(p)" mat-icon-button mat-raised-button color="warn">
         <mat-icon>favorite</mat-icon>
       </button>
-        <!-- TODO QUE CAMBIE SOLAMENTE PARA UN CARD-->
-        <button [@fadeInOut]="'in'" *ngIf="p.verificado" id="check"
-                style="margin-top: 15px;"
-                mat-icon-button mat-raised-button
-                color="primary">
-          <mat-icon [matTooltip]="tooltip">check_circle</mat-icon>
-        </button>
-        </span>
+    </span>
       <div class="buttons-group">
-        <span class="span-buttons-container">
-          <form [formGroup]="form">
-          <mat-form-field style="width: 100px; margin-left: 10px">
-          <mat-label>Cantidad</mat-label>
-               <input matInput type="number" min="0" formControlName="cantidad">
-            <span *ngIf="p.verificadoInput">
-                <mat-error>Ingrese cantidad</mat-error>
-              </span>
-        </mat-form-field>
-          <button matTooltip="Agregar al carro" (click)="addToCart(p)"
-                  mat-raised-button
-                  color="warn">
-          Agregar
-          <mat-icon>add_shopping_cart</mat-icon>
-        </button>
-          </form>
-        </span>
-
+      <span class="span-buttons-container">
+        <form [formGroup]="getFormGroup(p.id)">
+          <mat-form-field style="width: 100px; margin-left: 40px">
+            <mat-label>Cantidad</mat-label>
+            <input matInput type="number" min="0" formControlName="cantidad">
+            <mat-error *ngIf="getFormGroup(p.id).get('cantidad').invalid && getFormGroup(p.id).get('cantidad').touched">Ingrese cantidad</mat-error>
+          </mat-form-field>
+          <div [matTooltip]="tooltipText(p.id)" style="margin-left: 160px; margin-top: -54px">
+          <button [disabled]="getFormGroup(p.id).get('cantidad').value <= 0"
+                  class="btn-self" (click)="addToCart(p)"
+                  mat-raised-button (mouseup)="tooltip.show(50)"
+                  (mouseleave)="tooltip.hide(3000)" color="warn">Agregar<mat-icon>add_shopping_cart</mat-icon></button>
+            </div>
+        </form>
+      </span>
       </div>
     </mat-card>
   </div>
+
 </div>
 
 

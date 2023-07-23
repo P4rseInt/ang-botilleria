@@ -1,19 +1,29 @@
-<!--<div class="body">-->
-<!--  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">-->
-<!--  <label for="openSidebarMenu" class="sidebarIconToggle">-->
-<!--    <div class="spinner diagonal part-1"></div>-->
-<!--    <div class="spinner horizontal"></div>-->
-<!--    <div class="spinner diagonal part-2"></div>-->
-<!--  </label>-->
-<!--  <div id="sidebarMenu">-->
-<!--    <mat-divider></mat-divider>-->
-<!--    <mat-divider></mat-divider>-->
-<!--    <div class="main-content-wrapper">-->
-<!--      <a [routerLink]="['/productos']">Productos</a>-->
-<!--      <mat-divider></mat-divider>-->
-<!--      <a [routerLink]="['/ofertas']">Ofertas</a>-->
-<!--      <mat-divider></mat-divider>-->
-<!--      <a [routerLink]="['/nosotros']">Nosotros</a>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="navbar-container">
+  <mat-toolbar color="warn" class="mat-toolbar">
+    <button class="btn-home" matTooltip="Inicio" mat-button [routerLink]="['/home']">
+      <img src="assets/Colombo-logo-64A78B903B-seeklogo.com.png" alt="" style="height: 70px; width: 70px">
+    </button>
+    <button matTooltip="Productos" mat-button [routerLink]="['/productos']">
+      <mat-icon>inventory</mat-icon>
+      Productos
+    </button>
+    <button matTooltip="Ofertas" mat-button [routerLink]="['/ofertas']">
+      <mat-icon>savings</mat-icon>
+      Ofertas
+    </button>
+    <button matTooltip="Nosotros" mat-button [routerLink]="['/nosotros']">
+      <mat-icon>handshake</mat-icon>
+      Nosotros
+    </button>
+    <span class="spacer"></span>
+    <div class="button-div">
+      <button matTooltip="Mi perfil" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Mi perfil</button>
+        <button mat-menu-item>Cerrar sesión</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+</div>

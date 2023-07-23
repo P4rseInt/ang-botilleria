@@ -9,7 +9,6 @@
   justify-content: center
   align-items: center
   margin-left: 200px
-  width: 80%
 
 .btn-fav
   margin-left: 20px
@@ -42,6 +41,62 @@
 .span-buttons-container
   align-content: space-between
   margin-left: -300px
+
+//EFECTO IMAGENES
+.image-container
+  display: flex
+  justify-content: space-around
+
+
+/* Estilo para las imágenes */
+.image-container img
+  transition: transform 0.5s
+
+
+/* Efecto hover */
+.image-container img:hover
+  transform: translateY(-15px)
+
+//.btn-self
+//  cursor: pointer
+//  transition: transform 0.3s
+//
+//.btn-self:hover
+//  background-color: blue
+//
+//btn-self:active
+//  transform: translateY(-10px)
+
+#tooltip-div
+  margin-top: 100px
+  opacity: 10
+
+.btn-self::before
+  content: ''
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  height: 3px
+  background-color: ghostwhite
+  transform: scaleX(0)
+  transition: transform 0.2s ease-in-out
+
+.btn-self:hover::before
+  transform: scaleX(1)
+
+.btn-self[disabled]:hover::before
+  transform: scaleX(1)
+  transition: transform 2s ease-in-out
+  background-color: white
+
+.btn-self[disabled]
+  opacity: 0.5
+  /* cambia la opacidad del botón deshabilitado */
+  background-color: red
+  /* cambia el color de fondo del botón deshabilitado */
+  color: white
+/* cambia el color del texto del botón deshabilitado */
 
 
 

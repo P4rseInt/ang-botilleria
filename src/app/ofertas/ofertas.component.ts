@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-ofertas',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OfertasComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private ngxLoader: NgxUiLoaderService) {
   }
 
+  ngOnInit(): void {
+    this.ngxLoader.start();
+    setTimeout(() => {
+      this.ngxLoader.stop();
+    }, 500);
+  }
 }
